@@ -2,5 +2,6 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="com.my.demo.repository.StudentRepo"/>
     <fullyQualifiedTypeName name="com.my.demo.model.Student"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.datatype.jsr310.ser.JavaTimeSerializerModifier"/>
     <fullyQualifiedTypeName name="org.springframework.boot.web.servlet.support.SpringBootServletInitializer"/>
 </qualifiedTypeNameHistroy>

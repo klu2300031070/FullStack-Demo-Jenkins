@@ -9,7 +9,7 @@ export default function Demo() {
   const hs = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:2100/add", student);
+      await axios.post("http://localhost:2030/reactstudent/add", student);
       alert("Added ");
       setstudent({ id: "", name: "", branch: "" });
     } catch (err) {
@@ -64,7 +64,7 @@ export default function Demo() {
         onSubmit={async (e) => {
           e.preventDefault();
           try {
-            const res = await axios.get(`http://localhost:2100/view?s=${id}`);
+            const res = await axios.get(`http://localhost:2030/reactstudent/view?s=${id}`);
             setstudentdata(res.data);
 
             if (!res.data) {
