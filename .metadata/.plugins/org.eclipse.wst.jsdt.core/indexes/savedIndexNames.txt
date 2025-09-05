@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\3-1 Semester\Jenkis-FullStack\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1908114357.index
+1248317941.index
+531936357.index
+2486479168.index
+1188217801.index
+3321136390.index

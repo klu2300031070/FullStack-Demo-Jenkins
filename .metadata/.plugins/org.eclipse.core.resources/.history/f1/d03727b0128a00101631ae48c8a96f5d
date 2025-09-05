@@ -1,0 +1,5 @@
+package com.my.demo.StudentRepo;
+
+public interface StudentRepo {
+
+}

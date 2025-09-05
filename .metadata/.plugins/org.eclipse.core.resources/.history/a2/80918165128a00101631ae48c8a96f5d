@@ -1,0 +1,5 @@
+package com.my.demo.model;
+
+public class Student {
+
+}
