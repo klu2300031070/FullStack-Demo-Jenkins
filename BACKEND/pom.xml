@@ -11,7 +11,7 @@
 	<groupId>com.my.demo</groupId>
 	<artifactId>BACKEND</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringBootProject</name>
+	<name>BACKEND</name>
 	<description>Demo project for Spring Boot</description>
 	<packaging>war</packaging>
 	<url/>

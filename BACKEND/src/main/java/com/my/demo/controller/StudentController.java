@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class StudentController extends SpringBootServletInitializer {
+public class StudentController {
 	@Autowired
 	private StudentRepo r; 
 

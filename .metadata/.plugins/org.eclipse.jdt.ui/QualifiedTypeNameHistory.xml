@@ -2,4 +2,5 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="com.my.demo.repository.StudentRepo"/>
     <fullyQualifiedTypeName name="com.my.demo.model.Student"/>
+    <fullyQualifiedTypeName name="org.springframework.boot.web.servlet.support.SpringBootServletInitializer"/>
 </qualifiedTypeNameHistroy>
