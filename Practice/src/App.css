@@ -83,3 +83,57 @@
   font-weight: bold;
   color: #007bff;
 }
+
+/* Student Table */
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 15px;
+}
+
+.student-table th,
+.student-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.student-table th {
+  background: #007bff;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.student-table tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+.student-table tr:hover {
+  background: #eef5ff;
+  transition: 0.2s;
+}
+
+/* Action Buttons inside Table */
+.student-table .btn {
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  margin: 0 5px;
+}
+
+/* Delete Button */
+.delete-btn {
+  background: #dc3545;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background: #b02a37;
+}

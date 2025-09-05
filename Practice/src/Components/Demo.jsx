@@ -5,12 +5,13 @@ export default function Demo() {
   const [student, setstudent] = useState({ id: "", name: "", branch: "" });
   const [studentdata, setstudentdata] = useState(null);
   const [id, setid] = useState("");
+  const [allstudents, setallstudents] = useState([]); // for storing all students
 
   const hs = async (e) => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:2030/springbootbackend/add", student);
-      alert("Added ");
+      alert("Added");
       setstudent({ id: "", name: "", branch: "" });
     } catch (err) {
       console.log("error", err);
@@ -19,6 +20,26 @@ export default function Demo() {
 
   const hc = (e) => {
     setstudent({ ...student, [e.target.name]: e.target.value });
+  };
+
+  const handleViewAll = async () => {
+    try {
+      const res = await axios.get("http://localhost:2030/springbootbackend/viewall");
+      setallstudents(res.data);
+    } catch (err) {
+      console.log("Error fetching all students", err);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:2030/springbootbackend/delete/${id}`);
+      alert(`Student with id ${id} deleted`);
+      // Refresh the table
+      handleViewAll();
+    } catch (err) {
+      console.log("Error deleting student", err);
+    }
   };
 
   return (
@@ -33,7 +54,7 @@ export default function Demo() {
           type="number"
           placeholder="Enter Id"
           name="id"
-          value={student.id}  
+          value={student.id}
           onChange={hc}
           className="input-field"
         />
@@ -41,7 +62,7 @@ export default function Demo() {
           type="text"
           placeholder="Enter Name"
           name="name"
-          value={student.name}   
+          value={student.name}
           onChange={hc}
           className="input-field"
         />
@@ -49,7 +70,7 @@ export default function Demo() {
           type="text"
           placeholder="Enter Branch"
           name="branch"
-          value={student.branch}   
+          value={student.branch}
           onChange={hc}
           className="input-field"
         />
@@ -64,16 +85,18 @@ export default function Demo() {
         onSubmit={async (e) => {
           e.preventDefault();
           try {
-            const res = await axios.get(`http://localhost:2030/springbootbackend/view?s=${id}`);
+            const res = await axios.get(
+              `http://localhost:2030/springbootbackend/view?s=${id}`
+            );
             setstudentdata(res.data);
 
             if (!res.data) {
-              alert("Not Found ");
+              alert("Not Found");
             } else {
-              alert("Found ");
+              alert("Found");
             }
 
-            setid(""); 
+            setid("");
           } catch (e) {
             console.log(e);
           }
@@ -92,7 +115,7 @@ export default function Demo() {
         </button>
       </form>
 
-      {/* Display Student Data */}
+      {/* Display Single Student Data */}
       {studentdata && (
         <div className="student-card">
           <p>
@@ -105,6 +128,46 @@ export default function Demo() {
             <span>Branch:</span> {studentdata.branch}
           </p>
         </div>
+      )}
+
+      {/* View All Students */}
+      <div className="form-container">
+        <h3 className="form-title">View All Students</h3>
+        <button onClick={handleViewAll} className="btn">
+          Load All Students
+        </button>
+      </div>
+
+      {/* Display All Students in Table */}
+      {allstudents.length > 0 && (
+        <table border="1" className="student-table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Branch</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allstudents.map((s) => (
+              <tr key={s.id}>
+                <td>{s.id}</td>
+                <td>{s.name}</td>
+                <td>{s.branch}</td>
+                <td>
+                  <button
+                    className="btn"
+                    style={{ background: "red" }}
+                    onClick={() => handleDelete(s.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   );
